@@ -2,7 +2,7 @@
 
 #
 #   Author: Chris Newman 
-#   Version: 1.1.7 Lite (Final)
+#   Version: 1.1.8 Lite (Final)
 #   Application: SysCheck
 #   Language: Python
 #
@@ -72,7 +72,7 @@ for char in case0:
 	os.system("echo >> check.log")
 	os.system("echo +---------------------------+ >> check.log")
 	os.system("echo + Author: Chris Newman >> check.log")
-	os.system("echo + Version: 1.1.7 Lite Final >> check.log")
+	os.system("echo + Version: 1.1.8 Lite Final >> check.log")
 	os.system("echo + Application: SysCheck >> check.log")
 	os.system("echo + Language: Python >> check.log")
 	os.system("echo +---------------------------+ >> check.log")
@@ -170,7 +170,7 @@ elif dist == ('debian'):
 	os.system("echo >> check.log")
 	os.system("echo Checking System Hardware: >> check.log")
 	os.system("echo >> check.log")
-	os.system("sudo apt-get install lshw -y")
+	os.system("sudo apt-get install lshw -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("lshw -short >> check.log")
 	os.system("echo >> check.log")
@@ -178,7 +178,7 @@ elif dist == ('Ubuntu'):
 	os.system("echo >> check.log")
 	os.system("echo Checking System Hardware: >> check.log")
 	os.system("echo >> check.log")
-	os.system("sudo apt-get install lshw -y")
+	os.system("sudo apt-get install lshw -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("lshw -short >> check.log")
 	os.system("echo >> check.log")
@@ -225,7 +225,7 @@ elif dist == ('Ubuntu'):
 	os.system("echo >> check.log")
 	os.system("echo Checking and Installing System Updates: >> check.log")
 	os.system("echo >> check.log")
-	os.system("; sudo apt-get update -y >> check.log")
+	os.system("sudo apt-get update -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("echo")
 	sys.stdout.write(char)
@@ -303,21 +303,21 @@ elif dist == ('debian'):
 	os.system("echo >> check.log")
 	os.system("echo Running System Cleanup: >> check.log")
 	os.system("echo >> check.log")
-	os.system("apt-get autoremove >> check.log")
+	os.system("apt-get autoremove -y >> check.log")
 	os.system("echo >> check.log")
-	os.system("apt-get clean >> check.log")
+	os.system("apt-get clean -y >> check.log")
 	os.system("echo >> check.log")
-	os.system("apt-get autoclean >> check.log")
+	os.system("apt-get autoclean -y >> check.log")
 	os.system("echo >> check.log")
 elif dist == ('Ubuntu'):
 	os.system("echo >> check.log")
 	os.system("echo Running System Cleanup: >> check.log")
 	os.system("echo >> check.log")
-	os.system("apt-get autoremove >> check.log")
+	os.system("apt-get autoremove -y >> check.log")
 	os.system("echo >> check.log")
-	os.system("apt-get clean >> check.log")
+	os.system("apt-get clean -y >> check.log")
 	os.system("echo >> check.log")
-	os.system("apt-get autoclean >> check.log")
+	os.system("apt-get autoclean -y >> check.log")
 	os.system("echo >> check.log")
 else:
 	os.system("echo >> check.log")
