@@ -2,7 +2,7 @@
 
 #
 #   Author: Chris Newman 
-#   Version: 1.1.8 Lite (Final)
+#   Version: 1.1.9 Lite (Final)
 #   Application: SysCheck
 #   Language: Python
 #
@@ -25,7 +25,7 @@ SysMem = 'Checking System Memory...\n\n';
 SysClean = 'Running System Cleanup...\n\n';
 SysUpdate = 'Checking and Installing System Updates...\n\n';
 SysHw = 'Checking System Hardware...\n\n';
-Version = ' Version: 1.1.7 (Final)';
+Version = ' Version: 1.1.9 (Final)';
 Complete = 'SysCheck Complete! Please review check.log for details.\n\n';
 
 # Import text time controls
@@ -58,7 +58,7 @@ case16 = Break;
 # OS distribution
 
 dist = platform.linux_distribution(
-                    supported_dists=('redhat', 'debian', 'SuSE', 'mandrake', 'Ubuntu'))[0];
+                    supported_dists=('redhat', 'debian', 'SuSE', 'mandrake', 'Ubuntu', 'Fedora'))[0];
 
 
 
@@ -72,7 +72,7 @@ for char in case0:
 	os.system("echo >> check.log")
 	os.system("echo +---------------------------+ >> check.log")
 	os.system("echo + Author: Chris Newman >> check.log")
-	os.system("echo + Version: 1.1.8 Lite Final >> check.log")
+	os.system("echo + Version: 1.1.9 Lite Final >> check.log")
 	os.system("echo + Application: SysCheck >> check.log")
 	os.system("echo + Language: Python >> check.log")
 	os.system("echo +---------------------------+ >> check.log")
@@ -121,6 +121,8 @@ for char in case6:
 	os.system("echo >> check.log")
 	os.system("python version.py >> check.log")
 	os.system("echo >> check.log")
+	os.system("ifconfig -a >> check.log")
+	os.system("echo >> check.log")
 	sys.stdout.write(char)
 	sys.stdout.flush()
 for char in case7:
@@ -162,7 +164,7 @@ elif dist == ('Fedora'):
 	os.system("echo >> check.log")
 	os.system("echo Checking System Hardware: >> check.log")
 	os.system("echo >> check.log")
-	os.system("yum install lshw -y >> check.log")
+	os.system("dnf install lshw -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("lshw -short >> check.log")
 	os.system("echo >> check.log")
@@ -212,7 +214,7 @@ elif dist == ('Fedora'):
 	os.system("echo Checking and Installing System Updates: >> check.log")
 	os.system("echo >> check.log")
 	os.system("echo >> check.log")
-	os.system("yum update -y >> check.log")
+	os.system("dnf update -y >> check.log")
 	os.system("echo >> check.log")
 elif dist == ('debian'):
 	os.system("echo >> check.log")
@@ -220,12 +222,16 @@ elif dist == ('debian'):
 	os.system("echo >> check.log")
 	os.system("sudo apt-get update -y >> check.log")
 	os.system("echo >> check.log")
+	os.system("sudo apt-get upgrade -y >> check.log")
+	os.system("echo >> check.log")
 elif dist == ('Ubuntu'):
 	os.system("echo")
 	os.system("echo >> check.log")
 	os.system("echo Checking and Installing System Updates: >> check.log")
 	os.system("echo >> check.log")
 	os.system("sudo apt-get update -y >> check.log")
+	os.system("echo >> check.log")
+	os.system("sudo apt-get upgrade -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("echo")
 	sys.stdout.write(char)
@@ -285,23 +291,21 @@ elif dist == ('Fedora'):
 	os.system("echo >> check.log")
 	os.system("echo Running System Cleanup: >> check.log")
 	os.system("echo >> check.log")
-	os.system("yum install yum utils -y >> check.log")
+	os.system("dnf autoremove >> check.log")
 	os.system("echo >> check.log")
-	os.system("package-cleanup --leaves --all >> check.log")
+	os.system("dnf repoquery --unsatisfied >> check.log")
 	os.system("echo >> check.log")
-	os.system("package-cleanup --problems >> check.log")
+	os.system("dnf list extras >> check.log")
 	os.system("echo >> check.log")
-	os.system("package-cleanup --orphans -all >> check.log")
+	os.system("dnf repoquery --duplicated>> check.log")
 	os.system("echo >> check.log")
-	os.system("package-cleanup --cleandupes >> check.log")
-	os.system("echo >> check.log")
-	os.system("package-cleanup --oldkernels >> check.log")
-	os.system("echo >> check.log")
-	os.system("/usr/sbin/yum-complete-transaction --cleanup-only >> check.log")
+	os.system("dnf repoquery --installonly>> check.log")
 	os.system("echo >> check.log")
 elif dist == ('debian'):
 	os.system("echo >> check.log")
 	os.system("echo Running System Cleanup: >> check.log")
+	os.system("echo >> check.log")
+	os.system("apt-get check -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("apt-get autoremove -y >> check.log")
 	os.system("echo >> check.log")
@@ -312,6 +316,8 @@ elif dist == ('debian'):
 elif dist == ('Ubuntu'):
 	os.system("echo >> check.log")
 	os.system("echo Running System Cleanup: >> check.log")
+	os.system("echo >> check.log")
+	os.system("apt-get check -y >> check.log")
 	os.system("echo >> check.log")
 	os.system("apt-get autoremove -y >> check.log")
 	os.system("echo >> check.log")
@@ -341,3 +347,4 @@ for char in case16:
 	os.system("echo >> check.log")
 	sys.stdout.write(char)
 	sys.stdout.flush()
+
