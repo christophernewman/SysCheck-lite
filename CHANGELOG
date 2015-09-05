@@ -2,9 +2,18 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+2015-09-05  Chris Newman  <chris@xnetproject.net>
+
+## [1.1.9-lite] - 2015-09-05 SysCheck-lite.py (SysCheck)
+### Updates
+- Made updates to System Update functions to support newer versions
+  of Fedora (systemd)
+- Added ifconfig to System Hardware checks
+- Cleaned up check.log lines
+
 2015-09-02  Chris Newman  <chris@xnetproject.net>
 
-## [1.1.8-lite] - 2015-08-31 SysCheck-lite.py (SysCheck)
+## [1.1.8-lite] - 2015-09-02 SysCheck-lite.py (SysCheck)
 ### Bug Fixes
 - Fix bugs for debian systems during cleanup checks
 - Removed stray semicolon
@@ -12,8 +21,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 2015-09-02  Chris Newman  <chris@xnetproject.net>
 
-## [1.1.7-lite] - 2015-08-31 SysCheck-lite.py (SysCheck)
+## [1.1.7-lite] - 2015-09-02 SysCheck-lite.py (SysCheck)
 ### Created
-- Forked original version to accomodate a ligher version for cron job
+- Forked original version to accomodate a ligher version for cron jobs
 - Implemented version checks for OS accuracy
 - Designed for faster checking
