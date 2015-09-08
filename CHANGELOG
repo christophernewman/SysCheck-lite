@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+2015-09-07  Chris Newman  <chris@xnetproject.net>
+
+## [1.1.10-lite] - 2015-09-07 SysCheck-lite.py (SysCheck)
+### Updates
+- Made updates to support SLES and openSUSE
+- Cleaned line spaces
+
 2015-09-05  Chris Newman  <chris@xnetproject.net>
 
 ## [1.1.9-lite] - 2015-09-05 SysCheck-lite.py (SysCheck)
