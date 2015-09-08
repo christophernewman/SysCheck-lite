@@ -2,7 +2,7 @@
 
 #
 #   Author: Chris Newman 
-#   Version: 1.1.9 Lite (Final)
+#   Version: 1.1.10 Lite (Final)
 #   Application: SysCheck
 #   Language: Python
 #
@@ -25,10 +25,10 @@ SysMem = 'Checking System Memory...\n\n';
 SysClean = 'Running System Cleanup...\n\n';
 SysUpdate = 'Checking and Installing System Updates...\n\n';
 SysHw = 'Checking System Hardware...\n\n';
-Version = ' Version: 1.1.9 (Final)';
+Version = ' Version: 1.1.10 Lite (Final)';
 Complete = 'SysCheck Complete! Please review check.log for details.\n\n';
 
-# Import text time controls
+# Import controls
 
 import sys
 import os
@@ -58,8 +58,7 @@ case16 = Break;
 # OS distribution
 
 dist = platform.linux_distribution(
-                    supported_dists=('redhat', 'debian', 'SuSE', 'mandrake', 'Ubuntu', 'Fedora'))[0];
-
+                    supported_dists=('redhat', 'debian', 'SuSE', 'mandrake', 'Ubuntu', 'Fedora', 'openSUSE '))[0];
 
 
 # Controls for each character line
@@ -72,7 +71,7 @@ for char in case0:
 	os.system("echo >> check.log")
 	os.system("echo +---------------------------+ >> check.log")
 	os.system("echo + Author: Chris Newman >> check.log")
-	os.system("echo + Version: 1.1.9 Lite Final >> check.log")
+	os.system("echo + Version: 1.1.10 Lite Final >> check.log")
 	os.system("echo + Application: SysCheck >> check.log")
 	os.system("echo + Language: Python >> check.log")
 	os.system("echo +---------------------------+ >> check.log")
@@ -160,6 +159,18 @@ elif dist == ('redhat'):
 	os.system("echo >> check.log")
 	os.system("lshw -short >> check.log")
 	os.system("echo >> check.log")
+elif dist == ('openSUSE '):
+	os.system("echo >> check.log")
+	os.system("echo Checking System Hardware: >> check.log")
+	os.system("echo >> check.log")
+	os.system("hwinfo --short >> check.log")
+	os.system("echo >> check.log")
+elif dist == ('SuSE'):
+	os.system("echo >> check.log")
+	os.system("echo Checking System Hardware: >> check.log")
+	os.system("echo >> check.log")
+	os.system("hwinfo --short >> check.log")
+	os.system("echo >> check.log")
 elif dist == ('Fedora'):
 	os.system("echo >> check.log")
 	os.system("echo Checking System Hardware: >> check.log")
@@ -209,10 +220,21 @@ elif dist == ('redhat'):
 	os.system("echo >> check.log")
 	os.system("yum update -y >> check.log")
 	os.system("echo >> check.log")
-elif dist == ('Fedora'):
+elif dist == ('openSUSE '):
 	os.system("echo >> check.log")
 	os.system("echo Checking and Installing System Updates: >> check.log")
 	os.system("echo >> check.log")
+	os.system("zypper --non-interactive --no-gpg-checks update >> check.log")
+	os.system("echo >> check.log")
+elif dist == ('SuSE'):
+	os.system("echo >> check.log")
+	os.system("echo Checking and Installing System Updates: >> check.log")
+	os.system("echo >> check.log")
+	os.system("zypper --non-interactive --no-gpg-checks update >> check.log")
+	os.system("echo >> check.log")
+elif dist == ('Fedora'):
+	os.system("echo >> check.log")
+	os.system("echo Checking and Installing System Updates: >> check.log")
 	os.system("echo >> check.log")
 	os.system("dnf update -y >> check.log")
 	os.system("echo >> check.log")
@@ -287,6 +309,18 @@ elif dist == ('redhat'):
 	os.system("echo >> check.log")
 	os.system("/usr/sbin/yum-complete-transaction --cleanup-only >> check.log")
 	os.system("echo >> check.log")
+elif dist == ('openSUSE '):
+	os.system("echo >> check.log")
+	os.system("echo Running System Cleanup: >> check.log")
+	os.system("echo >> check.log")
+	os.system("zypper clean --all >> check.log")
+	os.system("echo >> check.log")
+elif dist == ('SuSE'):
+	os.system("echo >> check.log")
+	os.system("echo Running System Cleanup: >> check.log")
+	os.system("echo >> check.log")
+	os.system("zypper clean --all >> check.log")
+	os.system("echo >> check.log")
 elif dist == ('Fedora'):
 	os.system("echo >> check.log")
 	os.system("echo Running System Cleanup: >> check.log")
@@ -344,6 +378,7 @@ for char in case16:
 	os.system("date >> check.log")
 	os.system("echo >> check.log")
 	os.system("echo ----- >> check.log")
+	print dist;
 	os.system("echo >> check.log")
 	sys.stdout.write(char)
 	sys.stdout.flush()
