@@ -3,7 +3,7 @@ SysCheck - The Linux System Check Utility.
 
 
 Homepage: http://www.xnetproject.net/
-Version : 1.1.9-lite
+Version : 1.1.10-lite
 Language: Python
 Author  : Chris Newman <chris@xnetproject.net>
 
@@ -66,7 +66,7 @@ Supported Platforms
   SysCheck has been tested upon the following platforms:
 
 	Ubuntu  	Debian		Ubuntu Mate		Fedora (systemd)
-	Redhat		CentOS
+	Redhat		CentOS		SuSE			openSUSE
 
 
  
